@@ -1,0 +1,65 @@
+﻿@model MvcBiblioteka.Models.Ksiazka
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>Szczegóły</h2>
+
+<fieldset>
+    <legend>Ksiazka</legend>
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Tytul)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Tytul)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Autor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Autor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Wydawnictwo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Wydawnictwo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Miejsce_Wydania)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Miejsce_Wydania)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Rok_Wydania)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rok_Wydania)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Ilosc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ilosc)
+    </div>
+    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nr_ISBN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nr_ISBN)
+    </div>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Wróć do listy", "Index")
+</p>

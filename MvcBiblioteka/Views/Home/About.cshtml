@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<hgroup class="title">
+    <h1>O nas</h1>
+</hgroup>
+
+<article>
+    <p>
+        Zapraszamy do naszej Biblioteki osoby w każdym wieku.
+    </p>
+
+    <p>
+        Nasze zbiory to książki z ostatniej dekady.
+    </p>
+
+    <p>
+        U nas znajdziecie "świeżynki", czyli książki, które miały swą premierę w 2015 roku.
+    </p>
+    <p>
+        <h2>Zapraszamy!</h2>
+    </p>
+</article>
+
+<aside>
+
+    <ul>
+        <li>@Html.ActionLink("Strona Główna", "Index", "Ksiazki")</li>
+        <li>@Html.ActionLink("Szukaj", "SearchIndex", "Ksiazki")</li>
+        <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+    </ul>
+</aside>
