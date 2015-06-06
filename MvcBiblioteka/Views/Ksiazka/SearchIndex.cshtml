@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MvcBiblioteka.Models.Ksiazka>
+
+@{
+    ViewBag.Title = "SearchIndex";
+}
+
+<h2>Szukaj</h2>
+<p>
+@using (Html.BeginForm()){    
+         <p> Autor:@Html.DropDownList("Autor", "All")<br />  
+         <input type="submit" value="Znajdź" /></p> 
+        }
+</p>
+
+<p></p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tytul)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Autor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wydawnictwo)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Miejsce_Wydania)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Rok_Wydania)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nr_ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ilosc)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Rezerwuj)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tytul)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Autor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wydawnictwo)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Miejsce_Wydania)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Rok_Wydania)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nr_ISBN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ilosc)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Rezerwuj)
+        </td>*@
+        
+    </tr>
+}
+
+</table>
