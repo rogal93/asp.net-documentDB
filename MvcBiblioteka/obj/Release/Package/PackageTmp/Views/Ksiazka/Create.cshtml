@@ -1,0 +1,85 @@
+﻿@model MvcBiblioteka.Models.Ksiazka
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Dodaj</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Ksiazka</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nr_ISBN)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nr_ISBN)
+            @Html.ValidationMessageFor(model => model.Nr_ISBN)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Tytul)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Tytul)
+            @Html.ValidationMessageFor(model => model.Tytul)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Autor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Autor)
+            @Html.ValidationMessageFor(model => model.Autor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Wydawnictwo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Wydawnictwo)
+            @Html.ValidationMessageFor(model => model.Wydawnictwo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Miejsce_Wydania)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Miejsce_Wydania)
+            @Html.ValidationMessageFor(model => model.Miejsce_Wydania)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Rok_Wydania)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Rok_Wydania)
+            @Html.ValidationMessageFor(model => model.Rok_Wydania)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Ilosc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ilosc)
+            @Html.ValidationMessageFor(model => model.Ilosc)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Dodaj" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

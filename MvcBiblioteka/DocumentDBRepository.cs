@@ -12,8 +12,17 @@ using System.Threading.Tasks;
 
 namespace MvcBiblioteka
 {
+    /// <summary>
+    /// Klasa z metodami łącząca się z Azure DocumentDB.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public static class DocumentDBRepository<T>
     {
+        /// <summary>
+        /// Metoda do wydobywania jednego dokumentu (rekordu).
+        /// </summary>
+        /// <param name="predicate">Warunek, który ma spełnić rekord.</param>
+        /// <returns></returns>
         public static T GetItem(Expression<Func<T, bool>> predicate)
         {
             return Client.CreateDocumentQuery<T>(Collection.DocumentsLink)
@@ -22,18 +31,34 @@ namespace MvcBiblioteka
                         .FirstOrDefault();
         }
 
+        /// <summary>
+        /// Metoda edytująca dokument.
+        /// </summary>
+        /// <param name="id">Id dokumentu, który nadpisujemy.</param>
+        /// <param name="item">Uaktualniony obiekt.</param>
+        /// <returns></returns>
         public static async Task<Document> UpdateItemAsync(string id, T item)
         {
             Document doc = GetDocument(id);
             return await Client.ReplaceDocumentAsync(doc.SelfLink, item);
         }
 
+        /// <summary>
+        /// Metoda usuwająca dokument.
+        /// </summary>
+        /// <param name="id">Id dokumentu.</param>
+        /// <returns></returns>
         public static async Task<Document> DeleteItemAsync(string id)
         {
             Document doc = GetDocument(id);
             return await Client.DeleteDocumentAsync(doc.SelfLink);
         }
 
+        /// <summary>
+        /// Metoda wydobywająca dokument z bazy na podstawie id.
+        /// </summary>
+        /// <param name="id">Id dokumentu.</param>
+        /// <returns></returns>
         private static Document GetDocument(string id)
         {
             return Client.CreateDocumentQuery(Collection.DocumentsLink)
@@ -42,11 +67,21 @@ namespace MvcBiblioteka
                 .FirstOrDefault();
         } 
 
+        /// <summary>
+        /// Metoad tworząca nowy dokument.
+        /// </summary>
+        /// <param name="item">Obiekt zapisany do dokumentu.</param>
+        /// <returns></returns>
         public static async Task<Document> CreateItemAsync(T item)
         {
             return await Client.CreateDocumentAsync(Collection.SelfLink, item);
         }
 
+        /// <summary>
+        /// Metoda do wydobywania wielu dokumentów (rekordu).
+        /// </summary>
+        /// <param name="predicate">Warunek, który ma spełnić rekord.</param>
+        /// <returns></returns>
         public static IEnumerable<T> GetItems(Expression<Func<T, bool>> predicate)
         {
             return Client.CreateDocumentQuery<T>(Collection.DocumentsLink)
@@ -54,7 +89,10 @@ namespace MvcBiblioteka
                 .AsEnumerable();
         } 
 
-        //Use the Database if it exists, if not create a new Database
+        /// <summary>
+        /// Wczytuje lub tworzy nową bazę danych.
+        /// </summary>
+        /// <returns></returns>
         private static Database ReadOrCreateDatabase()
         {
             var db = Client.CreateDatabaseQuery()
@@ -70,7 +108,11 @@ namespace MvcBiblioteka
             return db;
         }
 
-        //Use the DocumentCollection if it exists, if not create a new Collection
+        /// <summary>
+        /// Wczytuje lub tworzy kolekcję dokumentów.
+        /// </summary>
+        /// <param name="databaseLink">Adres bazy danych.</param>
+        /// <returns></returns>
         private static DocumentCollection ReadOrCreateCollection(string databaseLink)
         {
             var col = Client.CreateDocumentCollectionQuery(databaseLink)
